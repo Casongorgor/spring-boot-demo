@@ -11,6 +11,8 @@ Date: ${time?date}
 Time: ${time?time}
 <br>
 Message: ${message}
+messageCN: ${messageCN}
+name: ${name}
 </body>
 
 </html>
