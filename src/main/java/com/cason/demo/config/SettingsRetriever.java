@@ -11,11 +11,10 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties
 public class SettingsRetriever {
 
+	@Value("${application.message}")
+	private String message = "hi,hello world......";
 
-    @Value("${application.message}")
-    private String message = "hi,hello world......";
-
-    public String getMessage() {
-        return message;
-    }
+	public String getMessage() {
+		return message;
+	}
 }

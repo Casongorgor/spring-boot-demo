@@ -1,10 +1,7 @@
 <!DOCTYPE html>
 
-<html lang="en">
-<header>
-	<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-</header>
-
+<html lang="zh">
+<script type="text/javascript" src="../static/common/common.js"></script>
 <body>
 Date: ${time?date}
 <br>
