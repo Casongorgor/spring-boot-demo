@@ -2,7 +2,7 @@
 
 <html lang="en">
 <header>
-    <script type="text/javascript" src="../static/jquery/jquery-3.2.1.min.js"></script>
+	<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 </header>
 
 <body>
