@@ -15,7 +15,7 @@ import org.springframework.context.annotation.PropertySources;
  */
 @Configuration
 @EnableAutoConfiguration
-@PropertySources(value = { @PropertySource("config/config.properties") })
+@PropertySources(value = { @PropertySource("classpath:config/config.properties") })
 public class ConfigRetriever {
 	@Value("${config.nihaoya}")
 	public String nihaoya;
