@@ -139,4 +139,10 @@
       deletestatus = #{deletestatus,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from ly_user
+  </select>
+
 </mapper>

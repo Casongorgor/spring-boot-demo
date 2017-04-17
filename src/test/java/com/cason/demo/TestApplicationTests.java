@@ -25,4 +25,10 @@ public class TestApplicationTests {
 		System.out.println(user);
 	}
 
+	@Test
+	public void testUserPage(){
+		System.out.println(lyUserService.selectAllBypage(1,1));
+
+	}
+
 }
