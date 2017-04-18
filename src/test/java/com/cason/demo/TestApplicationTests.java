@@ -1,6 +1,7 @@
 package com.cason.demo;
 
 import com.cason.demo.Service.LyUserService;
+import com.cason.demo.Service.RedisService;
 import com.cason.demo.model.LyUser;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,6 +14,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class TestApplicationTests {
 	@Autowired
 	LyUserService lyUserService;
+
+
+	@Autowired
+	RedisService redisService;
 
 	@Test
 	public void contextLoads() {
@@ -29,6 +34,12 @@ public class TestApplicationTests {
 	public void testUserPage(){
 		System.out.println(lyUserService.selectAllBypage(1,1));
 
+	}
+
+	@Test
+	public void testRedis(){
+		redisService.set("testKey","testRedis90182012389123");
+		System.out.println(redisService.get("testKey"));
 	}
 
 }
