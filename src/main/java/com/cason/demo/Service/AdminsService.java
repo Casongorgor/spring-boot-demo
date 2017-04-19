@@ -11,35 +11,35 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class AdminsService {
-	private static final Logger log = LoggerFactory.getLogger(AdminsService.class);
+    private static final Logger log = LoggerFactory.getLogger(AdminsService.class);
 
-	// @Autowired
-	// private AdminsMapper adminsMapper;
+    // @Autowired
+    // private AdminsMapper adminsMapper;
 
-	/**
-	 * 校验token
-	 * 
-	 * @param mobile
-	 * @param token
-	 * @return
-	 */
-	public boolean checkToken(String mobile, String token) {
-		// if(StringUtils.isBlank(mobile) || StringUtils.isBlank(token) ||
-		// !StringUtils.isNumeric(mobile)){
-		// return false;
-		// }
+    /**
+     * 校验token
+     *
+     * @param mobile
+     * @param token
+     * @return
+     */
+    public boolean checkToken(String mobile, String token) {
+        // if(StringUtils.isBlank(mobile) || StringUtils.isBlank(token) ||
+        // !StringUtils.isNumeric(mobile)){
+        // return false;
+        // }
 
-		// Admins admins = adminsMapper.selectByMobile(Long.valueOf(mobile));
+        // Admins admins = adminsMapper.selectByMobile(Long.valueOf(mobile));
 
-		// if(admins == null || !token.equalsIgnoreCase(admins.getToken())){
-		// return false;
-		// }
-		log.info("do something--------------");
-		return true;
-	}
+        // if(admins == null || !token.equalsIgnoreCase(admins.getToken())){
+        // return false;
+        // }
+        log.info("do something--------------");
+        return true;
+    }
 
-	public static String getUUID() {
-		return UUID.randomUUID().toString().replaceAll("-", "");
-	}
+    public static String getUUID() {
+        return UUID.randomUUID().toString().replaceAll("-", "");
+    }
 
 }

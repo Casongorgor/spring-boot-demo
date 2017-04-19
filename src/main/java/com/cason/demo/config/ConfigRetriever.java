@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package com.cason.demo.config;
 
@@ -11,12 +11,11 @@ import org.springframework.context.annotation.PropertySources;
 
 /**
  * @author nanoha
- *
  */
 @Configuration
 @EnableAutoConfiguration
-@PropertySources(value = { @PropertySource("classpath:config/config.properties") })
+@PropertySources(value = {@PropertySource("classpath:config/config.properties")})
 public class ConfigRetriever {
-	@Value("${config.nihaoya}")
-	public String nihaoya;
+    @Value("${config.nihaoya}")
+    public String nihaoya;
 }

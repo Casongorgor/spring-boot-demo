@@ -24,14 +24,14 @@ public class AuthenticateIntercept extends HandlerInterceptorAdapter {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
             throws Exception {
-        logger.info("AuthenticateIntercept----------校验，do something-----{}",request.getRequestURI());
+        logger.info("AuthenticateIntercept----------校验，do something-----{}", request.getRequestURI());
         HandlerMethod handlerMethod = (HandlerMethod) handler;
         Method method = handlerMethod.getMethod();
         Authenticate authenticate = method.getAnnotation(Authenticate.class);
         if (Objects.nonNull(authenticate)) {
             String accessToke = request.getHeader(HeaderCons.ACCESS_TOKEN);
             String mobile = request.getHeader(HeaderCons.MOBILE);
-            if(!getAdminsService().checkToken(mobile,accessToke)){
+            if (!getAdminsService().checkToken(mobile, accessToke)) {
                 logger.info("无效的访问令牌 {}", accessToke);
                 throw new RuntimeException("令牌失效！");
             }
@@ -43,11 +43,13 @@ public class AuthenticateIntercept extends HandlerInterceptorAdapter {
 
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
-                           ModelAndView modelAndView) throws Exception {}
+                           ModelAndView modelAndView) throws Exception {
+    }
 
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
-            throws Exception {}
+            throws Exception {
+    }
 
     public AdminsService getAdminsService() {
         return SpringContextUtil.getBean(AdminsService.class);

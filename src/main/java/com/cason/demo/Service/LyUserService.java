@@ -17,12 +17,12 @@ public class LyUserService {
     @Autowired
     LyUserMapper lyUserMapper;
 
-    public LyUser selectByPrimaryKey(Integer id){
+    public LyUser selectByPrimaryKey(Integer id) {
         return lyUserMapper.selectByPrimaryKey(id);
     }
 
-    public PageInfo selectAllBypage(int pageNo, int pageSize){
-        PageHelper.startPage(pageNo, pageSize,"createTime desc");
+    public PageInfo selectAllBypage(int pageNo, int pageSize) {
+        PageHelper.startPage(pageNo, pageSize, "createTime desc");
         List<LyUser> lyUserList = lyUserMapper.selectAll();
         PageInfo pageInfo = new PageInfo(lyUserList, pageSize);
         return pageInfo;

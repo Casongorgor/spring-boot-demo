@@ -21,43 +21,43 @@ import com.cason.demo.model.LyUser;
  */
 @Controller
 public class IndexController {
-	private final Logger log = LoggerFactory.getLogger(IndexController.class);
+    private final Logger log = LoggerFactory.getLogger(IndexController.class);
 
-	@Autowired
-	SettingsRetriever settingsRetriever;
-	@Autowired
-	ConfigRetriever configRetriever;
+    @Autowired
+    SettingsRetriever settingsRetriever;
+    @Autowired
+    ConfigRetriever configRetriever;
 
-	@Autowired
-	LyUserService lyUserService;
+    @Autowired
+    LyUserService lyUserService;
 
-	@RequestMapping("/welcome")
-	public String welcome(Map<String, Object> model) {
-		LyUser fi = lyUserService.selectByPrimaryKey(1);
-		model.put("time", new Date());
-		model.put("message", settingsRetriever.getMessage());
-		model.put("messageCN", "测试message咯");
+    @RequestMapping("/welcome")
+    public String welcome(Map<String, Object> model) {
+        LyUser fi = lyUserService.selectByPrimaryKey(1);
+        model.put("time", new Date());
+        model.put("message", settingsRetriever.getMessage());
+        model.put("messageCN", "测试message咯");
 
-		model.put("name", fi.getAccountname());
-		log.info("model = [" + model + "]");
+        model.put("name", fi.getAccountname());
+        log.info("model = [" + model + "]");
 
-		return "web";// 返回的内容就是templetes下面文件的名称
-	}
+        return "web";// 返回的内容就是templetes下面文件的名称
+    }
 
-	@RequestMapping("/show")
-	public ModelAndView show() {
-		// 可以将view指定
-		ModelAndView model = new ModelAndView("show");
-		LyUser fi = lyUserService.selectByPrimaryKey(1);
-		fi.setDescription(configRetriever.nihaoya);
-		model.addObject("fi", fi);
-		return model;
-	}
+    @RequestMapping("/show")
+    public ModelAndView show() {
+        // 可以将view指定
+        ModelAndView model = new ModelAndView("show");
+        LyUser fi = lyUserService.selectByPrimaryKey(1);
+        fi.setDescription(configRetriever.nihaoya);
+        model.addObject("fi", fi);
+        return model;
+    }
 
-	@Authenticate
-	@RequestMapping("/welcomeNoneAuth")
-	public String web(Map<String, Object> model) {
-		throw new RuntimeException("出异常了，怎么处理！");
-	}
+    @Authenticate
+    @RequestMapping("/welcomeNoneAuth")
+    public String web(Map<String, Object> model) {
+        throw new RuntimeException("出异常了，怎么处理！");
+    }
 
 }

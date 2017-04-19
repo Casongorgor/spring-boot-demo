@@ -17,7 +17,7 @@ public class DemoTask {
      * 每5分钟来一发
      */
     @Scheduled(cron = "0 0/5 * * * ?")
-    public void testTask(){
+    public void testTask() {
 
         logger.info("开job lo， do something---------------");
 

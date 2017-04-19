@@ -13,10 +13,10 @@ import java.util.Map;
 public class UserController {
 
     @GetMapping(value = "/user/kuayu")
-    public Object userAudit(){
+    public Object userAudit() {
         Map<String, String> result = new HashMap<>();
-        result.put("key","15112");
-        result.put("mobile","1515151515151");
+        result.put("key", "15112");
+        result.put("mobile", "1515151515151");
         return result;
     }
 }
