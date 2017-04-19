@@ -21,7 +21,7 @@ import java.util.Set;
  */
 @Service
 public class RedisService {
-    private static final Logger logger = LoggerFactory.getLogger(AdminsService.class);
+    private static final Logger logger = LoggerFactory.getLogger(RedisService.class);
 
     @Autowired
     private StringRedisTemplate redisTemplate;
@@ -33,7 +33,7 @@ public class RedisService {
     private static int timeoutUser=5000;
     // redis 锁过期时间
     private static int expireMsecs = 5000;
-    private  static int expireUser=1000;
+    private static int expireUser=1000;
 
     private static String lockKey = "SHOPRECORDREDIS_LOCKKEY";
 
