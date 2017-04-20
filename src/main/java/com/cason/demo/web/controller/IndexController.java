@@ -1,12 +1,14 @@
-package com.cason.demo.controller;
+package com.cason.demo.web.controller;
 
 import java.util.Date;
 import java.util.Map;
 
+import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -31,7 +33,8 @@ public class IndexController {
     @Autowired
     LyUserService lyUserService;
 
-    @RequestMapping("/welcome")
+    @ApiOperation(value="获取用户列表", notes="")
+    @GetMapping("/welcome")
     public String welcome(Map<String, Object> model) {
         LyUser fi = lyUserService.selectByPrimaryKey(1);
         model.put("time", new Date());
@@ -44,7 +47,7 @@ public class IndexController {
         return "web";// 返回的内容就是templetes下面文件的名称
     }
 
-    @RequestMapping("/show")
+    @GetMapping("/show")
     public ModelAndView show() {
         // 可以将view指定
         ModelAndView model = new ModelAndView("show");
