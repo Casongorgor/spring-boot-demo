@@ -1,4 +1,4 @@
-package com.cason.demo.Service;
+package com.cason.demo.service;
 
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;

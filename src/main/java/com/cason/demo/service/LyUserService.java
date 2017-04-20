@@ -1,4 +1,4 @@
-package com.cason.demo.Service;
+package com.cason.demo.service;
 
 import com.cason.demo.mapper.LyUserMapper;
 import com.cason.demo.model.LyUser;

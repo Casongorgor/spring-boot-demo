@@ -1,7 +1,7 @@
 package com.cason.demo;
 
-import com.cason.demo.Service.LyUserService;
-import com.cason.demo.Service.RedisService;
+import com.cason.demo.service.LyUserService;
+import com.cason.demo.service.RedisService;
 import com.cason.demo.model.LyUser;
 import org.junit.Test;
 import org.junit.runner.RunWith;
