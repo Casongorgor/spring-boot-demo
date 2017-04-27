@@ -14,7 +14,14 @@ public class SettingsRetriever {
     @Value("${application.message}")
     private String message = "hi,hello world......";
 
+    @Value("${mq.event.rabbitmq.consumer.key}")
+    private String senderRoutingKey;
+
     public String getMessage() {
         return message;
+    }
+
+    public String getSenderRoutingKey() {
+        return senderRoutingKey;
     }
 }

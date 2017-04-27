@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:rabbit="http://www.springframework.org/schema/rabbit"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+   http://www.springframework.org/schema/rabbit http://www.springframework.org/schema/rabbit/spring-rabbit-1.4.xsd"
+	default-lazy-init="true">
+
+	<!-- 发送相关 -->
+	<rabbit:template id="amqpTemplate" connection-factory="eventMqConnectionFactory"
+					 exchange="${mq.event.rabbitmq.sender.exchange}" />
+
+
+	<!--通过指定下面的admin信息，当前producer中的exchange和queue会在rabbitmq服务器上自动生成-->
+	<rabbit:admin connection-factory="eventMqConnectionFactory"/>
+
+	<rabbit:queue name="${mq.event.rabbitmq.sender.queueName}" durable="true" auto-delete="false" exclusive="false"/>
+	<rabbit:direct-exchange name="${mq.event.rabbitmq.sender.exchange}">
+		<rabbit:bindings>
+			<rabbit:binding queue="${mq.event.rabbitmq.sender.queueName}"
+							key="${mq.event.rabbitmq.consumer.key}" />
+		</rabbit:bindings>
+	</rabbit:direct-exchange>
+	<!-- end 发送相关 -->
+
+	<!-- 监听相关 -->
+	<rabbit:listener-container
+			connection-factory="eventMqConnectionFactory" acknowledge="manual">
+		<rabbit:listener queues="${mq.event.rabbitmq.consumer.queueName}"
+						 ref="rabbitMQEventHandle" />
+	</rabbit:listener-container>
+
+	<bean id="rabbitMQEventHandle"
+		class="com.cason.demo.event.RabbitMQEventHandle"></bean>
+	<!--end 监听相关 -->
+
+
+	<!-- 定义MQ 连接工厂 -->
+	<bean id="eventMqConnectionFactory"
+		class="org.springframework.amqp.rabbit.connection.CachingConnectionFactory">
+		<property name="uri" value="${mq.event.rabbitmq.uri}" />
+		<property name="channelCacheSize" value="${mq.event.rabbitmq.channelCacheSize}" />
+	</bean>
+
+	<bean id="retryTemplate" class="org.springframework.retry.support.RetryTemplate">
+		<property name="backOffPolicy">
+			<bean class="org.springframework.retry.backoff.ExponentialBackOffPolicy">
+				<property name="initialInterval" value="500" />
+				<property name="multiplier" value="10.0" />
+				<property name="maxInterval" value="30000" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="messageConverter"
+		class="org.springframework.amqp.support.converter.Jackson2JsonMessageConverter" />
+
+</beans>

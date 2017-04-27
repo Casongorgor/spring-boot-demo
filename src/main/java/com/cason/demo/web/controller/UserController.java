@@ -1,5 +1,6 @@
 package com.cason.demo.web.controller;
 
+import com.cason.demo.config.SettingsRetriever;
 import com.cason.demo.model.LyUser;
 import com.cason.demo.service.LyUserService;
 import com.cason.demo.web.ro.UserRo;
@@ -8,6 +9,8 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.amqp.core.AmqpTemplate;
+import org.springframework.amqp.support.converter.MessageConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,13 +25,25 @@ public class UserController {
     private final Logger log = LoggerFactory.getLogger(UserController.class);
 
     @Autowired
-    LyUserService lyUserService;
+    private LyUserService lyUserService;
+
+    @Autowired
+    private AmqpTemplate amqpTemplate;
+
+    @Autowired
+    private MessageConverter messageConverter;
+
+    @Autowired
+    private SettingsRetriever settingsRetriever;
+
+
 
     @ApiOperation(value="提交用户信息", notes="用于保存用户信息")
     @PostMapping(value = "/userAudit")
     public ResponseData userAudit(@RequestBody UserRo userRo) {
         log.info(userRo.toString());
-
+        amqpTemplate.convertAndSend(settingsRetriever.getSenderRoutingKey(),userRo.toString());
+        log.info("convertAndSend--------------------");
         return ResponseData.getSuccess();
     }
 
