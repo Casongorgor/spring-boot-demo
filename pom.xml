@@ -62,12 +62,14 @@
             <version>2.6</version>
         </dependency>
 
+        <!-- pagehelper mybatis分页 -->
         <dependency>
             <groupId>com.github.pagehelper</groupId>
             <artifactId>pagehelper</artifactId>
             <version>4.1.6</version>
         </dependency>
 
+        <!-- swagger2 -->
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
@@ -78,12 +80,16 @@
             <artifactId>springfox-swagger-ui</artifactId>
             <version>2.6.1</version>
         </dependency>
+        <!-- end swagger2 -->
 
+        <!-- rabbit mq -->
         <dependency>
             <groupId>org.springframework.amqp</groupId>
             <artifactId>spring-rabbit</artifactId>
         </dependency>
+        <!-- end rabbit mq -->
 
+        <!-- logback log文件输出 -->
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-core</artifactId>
@@ -95,6 +101,32 @@
             <artifactId>logback-classic</artifactId>
             <version>1.1.7</version>
         </dependency>
+        <!-- end logback log文件输出 -->
+
+        <!--注册中心定时任务begin-->
+        <dependency>
+            <groupId>com.dangdang</groupId>
+            <artifactId>elastic-job-core</artifactId>
+            <version>1.1.1</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>log4j</groupId>
+                    <artifactId>log4j</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.dangdang</groupId>
+            <artifactId>elastic-job-spring</artifactId>
+            <version>1.1.1</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>log4j</groupId>
+                    <artifactId>log4j</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!--注册中心定时任务end-->
 
 
     </dependencies>

@@ -9,7 +9,10 @@
     <!--<context:component-scan base-package="${scan.basePackages}" />-->
 
     <import resource="classpath:rabbit/spring-rabbitmq.xml" />
-    <import resource="classpath:job/quartz-config.xml"/>
+    <!-- 单机的时候可以用 quartz -->
+    <!--<import resource="classpath:job/quartz-config.xml"/>-->
+    <!-- 集群分配的话得用当当的elasticJob -->
+    <import resource="classpath:job/elasticJob.xml"/>
     <!--<import resource="classpath:dubbo/provider.xml"/>-->
 
 
