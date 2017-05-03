@@ -7,7 +7,9 @@
     <!--<Logger name="org.apache.tomcat.util.net.NioSelectorPool" level="warn" />-->
     <!--<Logger name="org.hibernate.validator.internal.util.Version" level="warn" />-->
     <!--<Logger name="org.springframework" level="warn" />-->
-    <Property name="log.base" value="d:/logs/"/>
+    <!--<Property name="log.base" value="d:/logs/"/>-->
+    <property resource="application.properties" />
+    <Property name="log.base" value="${log.base}"/>
     <Property name="log.name" value="spring-boot-demo" />
     <Property name="patternTemplate" value="[%-5level] [%contextName] %d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] [%X{req.remoteHost}] [%X{req.requestURI}] [%X{traceId}] %logger - %msg%n" />
 
@@ -41,9 +43,9 @@
 
 
     <root level="info">
-        <springProfile name="dev,test">
-            <appender-ref ref="STDOUT" />
-        </springProfile>
+        <!--<springProfile name="dev,test">-->
+            <!--<appender-ref ref="STDOUT" />-->
+        <!--</springProfile>-->
         <appender-ref ref="ASYNC" />
     </root>
 

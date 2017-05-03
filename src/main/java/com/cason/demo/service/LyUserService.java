@@ -6,6 +6,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -28,4 +29,15 @@ public class LyUserService {
         return pageInfo;
 
     }
+
+    @Transactional(rollbackFor = Exception.class)
+    public void saveUser() throws Exception {
+        LyUser user = selectByPrimaryKey(1);
+        user.setUsername("testAbc1");
+        lyUserMapper.updateByPrimaryKey(user);
+        user.setAccountname("AcountName11");
+        lyUserMapper.updateByPrimaryKey(user);
+        throw new Exception("---------------");
+    }
+
 }

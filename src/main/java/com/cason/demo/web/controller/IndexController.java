@@ -43,6 +43,11 @@ public class IndexController {
 
         model.put("name", fi.getAccountname());
         log.info("model = [" + model + "]");
+        try {
+            lyUserService.saveUser();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         return "web";// 返回的内容就是templetes下面文件的名称
     }
@@ -60,6 +65,11 @@ public class IndexController {
     @Authenticate
     @RequestMapping("/welcomeNoneAuth")
     public String web(Map<String, Object> model) {
+        try {
+            lyUserService.saveUser();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         throw new RuntimeException("出异常了，怎么处理！");
     }
 
