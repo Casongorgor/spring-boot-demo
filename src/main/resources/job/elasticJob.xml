@@ -17,7 +17,7 @@
     <job:simple id="demoElasticJob" class="com.cason.demo.job.DemoElasticJob"
                 registry-center-ref="regCenter"
                 sharding-total-count="1"
-                cron="0 0/5 * * * ? "
+                cron="0 0/1 * * * ? "
                 sharding-item-parameters="0=0"
                 monitor-execution="false"
                 monitor-port="9888"
