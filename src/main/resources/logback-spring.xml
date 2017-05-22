@@ -8,9 +8,9 @@
     <!--<Logger name="org.hibernate.validator.internal.util.Version" level="warn" />-->
     <!--<Logger name="org.springframework" level="warn" />-->
     <!--<Property name="log.base" value="d:/logs/"/>-->
-    <property resource="application.properties" />
-    <Property name="log.base" value="${log.base}"/>
-    <Property name="log.name" value="spring-boot-demo" />
+    <!--<property resource="application.properties" />-->
+    <Property name="log.base" value="@{log.base}"/>
+    <Property name="log.name" value="@{name}" />
     <Property name="patternTemplate" value="[%-5level] [%contextName] %d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] [%X{req.remoteHost}] [%X{req.requestURI}] [%X{traceId}] %logger - %msg%n" />
 
 
@@ -42,12 +42,12 @@
     </appender>
 
 
-    <root level="info">
+    <root level="@{log.level}">
         <!--<springProfile name="dev,test">-->
             <!--<appender-ref ref="STDOUT" />-->
         <!--</springProfile>-->
         <appender-ref ref="ASYNC" />
     </root>
 
-    <Logger name="com.cason" level="debug" />
+    <Logger name="com.cason" level="@{log.level}" />
 </configuration>
