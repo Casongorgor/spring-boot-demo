@@ -98,27 +98,38 @@
         <!-- end logback log文件输出 -->
 
         <!--注册中心定时任务begin-->
+        <!--<dependency>-->
+            <!--<groupId>com.dangdang</groupId>-->
+            <!--<artifactId>elastic-job-core</artifactId>-->
+            <!--<version>1.1.1</version>-->
+            <!--<exclusions>-->
+                <!--<exclusion>-->
+                    <!--<groupId>log4j</groupId>-->
+                    <!--<artifactId>log4j</artifactId>-->
+                <!--</exclusion>-->
+            <!--</exclusions>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>com.dangdang</groupId>-->
+            <!--<artifactId>elastic-job-spring</artifactId>-->
+            <!--<version>1.1.1</version>-->
+            <!--<exclusions>-->
+                <!--<exclusion>-->
+                    <!--<groupId>log4j</groupId>-->
+                    <!--<artifactId>log4j</artifactId>-->
+                <!--</exclusion>-->
+            <!--</exclusions>-->
+        <!--</dependency>-->
+
         <dependency>
             <groupId>com.dangdang</groupId>
-            <artifactId>elastic-job-core</artifactId>
-            <version>1.1.1</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>log4j</groupId>
-                    <artifactId>log4j</artifactId>
-                </exclusion>
-            </exclusions>
+            <artifactId>elastic-job-lite-core</artifactId>
+            <version>2.1.3</version>
         </dependency>
         <dependency>
             <groupId>com.dangdang</groupId>
-            <artifactId>elastic-job-spring</artifactId>
-            <version>1.1.1</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>log4j</groupId>
-                    <artifactId>log4j</artifactId>
-                </exclusion>
-            </exclusions>
+            <artifactId>elastic-job-lite-spring</artifactId>
+            <version>2.1.3</version>
         </dependency>
         <!--注册中心定时任务end-->
 

@@ -42,7 +42,7 @@
     </appender>
 
 
-    <root level="@{log.level}">
+    <root level="info">
         <!--<springProfile name="dev,test">-->
             <!--<appender-ref ref="STDOUT" />-->
         <!--</springProfile>-->
